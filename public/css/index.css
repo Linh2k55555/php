@@ -1,0 +1,148 @@
+.card-sl {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    position: relative;
+    margin-top: 25px;
+}
+
+.card-sl .nut_delete{
+    position: absolute;
+    right: -16px;
+    top: -13px;
+}
+
+.card-image img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px 8px 0px 0;
+}
+
+.card-action {
+    position: relative;
+    float: right;
+    margin-top: -25px;
+    margin-right: 20px;
+    z-index: 2;
+    border-radius: 50%;
+    color: #E26D5C;
+    padding: 15px;
+    font-size: 15px;
+    box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.2), 2px 1px 2px 1px rgba(0, 0, 0, 0.19);
+}
+
+.card-action i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;  /* Đặt kích thước vòng tròn */
+    height: 30px; /* Đặt kích thước vòng tròn */
+    font-size: 20px;  /* Kích thước biểu tượng */
+    text-align: center;
+}
+
+.card-action:hover {
+    color: #fff;
+    background: #E26D5C;
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+.card-heading {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.card-text {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #636262;
+}
+
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+    color: #fff;
+
+}
+
+
+@-webkit-keyframes pulse {
+    0% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+    70% {
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    }
+
+    100% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+}
+
+.anhthem{
+    display: flex;
+    justify-content: space-between;
+}
+.thongtin{
+    padding: 13px 15px;
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: 20px;
+    color: rgb(4, 53, 116);
+}
+.thongtin .name{
+    font-weight: 700;
+    font-size: 20px;
+}
+.thongtin .price{
+    font-weight: 700;
+    color: orangered;
+    margin-bottom: 10px;
+}
+.thongtin .item{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: bold;
+}
+.thongtin .goi{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.thongtin .goi .btn{
+    background-color: rgb(12, 95, 167);
+    width: 40%;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    padding: 10px 20px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.thongtin i{
+    font-size: 17px;
+    margin-right: 10px;
+}
