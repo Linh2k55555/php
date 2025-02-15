@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NguoiDung;
 use App\Models\User;
+use App\Models\BrandCar;
+use App\Models\Post; // Use Post model to fetch car listings
 use Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    
     public function index()
     {
         $users = User::paginate(5);
@@ -30,7 +30,8 @@ class UserController extends Controller
         return view('pages.admin.user.index')->with('users', $users);
     }
 
-    public function delete($id)  {
+    public function delete($id)
+    {
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('user.index')->with('success', 'Xóa người dùng thành công!');
@@ -43,20 +44,24 @@ class UserController extends Controller
             'mat_khau' => 'required|string|min:6',
         ]);
 
-        $nguoiDung = NguoiDung::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if ($nguoiDung && Hash::check($request->mat_khau, $nguoiDung->mat_khau)) {
+        if ($user && Hash::check($request->mat_khau, $user->password)) {
             session([
-                'nguoi_dung_id' => $nguoiDung->id_nguoi_dung,
-                'ten_nguoi_dung' => $nguoiDung->ten_nguoi_dung,
-                'email' => $nguoiDung->email,
+                'user_id' => $user->id,
+                'username' => $user->username,
+                'email' => $user->email,
             ]);
 
-            return redirect()->route('home');
+            // Fetch car brands and car posts
+            $brandCars = BrandCar::all();
+            $cars = Post::with(['carBrand', 'address', 'user'])->get(); // Load related models
+
+            // Render the cars.blade.php page with data
+            return view('pages.user.cars', compact('brandCars', 'cars'));
         }
 
-
-        return back();
+        return back()->with('error', 'Sai thông tin đăng nhập! Vui lòng thử lại.');
     }
 
     public function logout(Request $request)
